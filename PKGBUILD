@@ -51,7 +51,7 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make gconfig
+  make oldconfig
   diff -u ../config .config || :
 
   make -s kernelrelease > version
