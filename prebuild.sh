@@ -1,4 +1,6 @@
 #!/bin/bash
+echo -n "${SIGNING_KEY}" | gpg --import || exit 8
+gpg --armor --export-secret-keys
 gpg --keyserver keyserver.ubuntu.com --recv-keys C7E7849466FE2358343588377258734B41C31549 || exit 7
 gpg --keyserver keyserver.ubuntu.com --recv-keys 647F28654894E3BD457199BE38DBBDC86092693E || exit 7
 gpg --keyserver keyserver.ubuntu.com --recv-keys ABAF11C65A2970B130ABE3C479BE3E4300411886 || exit 7
@@ -7,4 +9,4 @@ gpg --keyserver keyserver.ubuntu.com --recv-keys C5ADB4F3FEBBCE27A3E54D7D9AE4078
 gpg --verbose --keyserver hkps://keys.openpgp.org --recv-keys 3B94A80E50A477C7 || exit 7
 curl -s https://keybase.io/heftig/pgp_keys.asc/?fingerprint\=a2ff3a36aaa56654109064ab19802f8b0d70fc30 | gpg --import  || exit 7
 echo -n "${SIGNING_KEY}"
-echo -n "${SIGNING_KEY}" | gpg --import || exit 8
+
